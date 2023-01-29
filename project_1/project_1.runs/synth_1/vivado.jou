@@ -2,11 +2,11 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Sat Jan 28 09:43:27 2023
-# Process ID: 13792
+# Start of session at: Sun Jan 29 11:02:05 2023
+# Process ID: 41228
 # Current directory: G:/Sem5/CSD/Processor project/Src files/project_1/project_1.runs/synth_1
-# Command line: vivado.exe -log alu_add_only.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source alu_add_only.tcl
-# Log file: G:/Sem5/CSD/Processor project/Src files/project_1/project_1.runs/synth_1/alu_add_only.vds
+# Command line: vivado.exe -log alu.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source alu.tcl
+# Log file: G:/Sem5/CSD/Processor project/Src files/project_1/project_1.runs/synth_1/alu.vds
 # Journal file: G:/Sem5/CSD/Processor project/Src files/project_1/project_1.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
-source alu_add_only.tcl -notrace
+source alu.tcl -notrace

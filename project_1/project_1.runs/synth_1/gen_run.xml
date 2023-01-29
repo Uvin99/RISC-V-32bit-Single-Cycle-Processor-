@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1674879205">
-  <File Type="PA-TCL" Name="alu_add_only.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="alu_add_only_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="alu_add_only_reports.tcl"/>
-  <File Type="RDS-RDS" Name="alu_add_only.vds"/>
-  <File Type="RDS-UTIL" Name="alu_add_only_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="alu_add_only_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="alu_add_only.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="alu_add_only_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="alu_add_only_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1674970322">
+  <File Type="PA-TCL" Name="alu.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="alu_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="alu_reports.tcl"/>
+  <File Type="RDS-RDS" Name="alu.vds"/>
+  <File Type="RDS-UTIL" Name="alu_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="alu_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="alu.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="alu_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="alu_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PPRDIR/../src/alu_adder.sv">
+    <File Path="$PPRDIR/../src/alu.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../src/alu.sv">
+    <File Path="$PPRDIR/../src/alu_adder.sv">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -28,7 +28,8 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="alu_add_only"/>
+      <Option Name="TopModule" Val="alu"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">

@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "G:/Sem5/CSD/Processor project/Src files/src/alu.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module alu
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "G:/Sem5/CSD/Processor project/Src files/src/alu_tb.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module alu
+WARNING: [VRFC 10-2845] overwriting previous definition of module alu [G:/Sem5/CSD/Processor project/Src files/src/alu.sv:25]
+INFO: [VRFC 10-311] analyzing module alu_tb

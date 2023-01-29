@@ -1,67 +1,64 @@
+/*
+ALU module, which takes two operands of size 32-bits each and a 4-bit ALU_control as input.
+Operation is performed on the basis of ALU_control value and output is 32-bit ALU_result. 
+If the ALU_result is zero, a ZERO FLAG is set.
+*/
+
+/*
+ALU Control lines | Function
+-----------------------------
+        0000    Bitwise-AND
+        0001    Bitwise-OR
+        0010	Add (A+B)
+        0100	Subtract (A-B)
+        1000	Set on less than
+        0011    Shift left logical
+        0101    Shift right logical
+        0110    Multiply
+        0111    Bitwise-XOR
+        1001    Not
+        1011    mov
+        1010    div
+        1101    mod
+*/
+
 module alu(
-           input [4:0] aluControl,
-           input [31:0] A,
-           input [31:0] B,
-           output [31:0] AluResult,
-           output [1:0] Flags
-           );
+    input [31:0] A,B, 
+    input[3:0] alu_control,
+    output reg [31:0] alu_result,
+    output reg zero_flag
+);
+    always @(*)
+    begin
+        // Operating based on control input
+        case(alu_control)
 
-wire [4:0] aluControl;
-wire signed [31:0] A,B;
-reg [31:0] AluResult;
-wire signed [31:0] A_signed;
-reg [1:0] Flags;
-assign A_signed=A;
+        4'b0000: alu_result = A&B;
+        4'b0001: alu_result = A|B;
+        4'b0010: alu_result = A+B;
+        4'b0100: alu_result = A-B;
+        4'b1000: begin 
+            if(A<B)
+            alu_result = 1;
+            else
+            alu_result = 0;
+        end
+        4'b0011: alu_result = A<<B;
+        4'b0101: alu_result = A>>B;
+        4'b0110: alu_result = A*B;  //multiply
+        4'b0111: alu_result = A^B; //xor
+        4'b1001: alu_result = ~A;  //not
+        4'b1011: alu_result = B;  //mov
+        4'b1010: alu_result = A/B; //div
+        4'b1101: alu_result = A%B; //mod
 
-//----------------------------------------
-always @(*)
-          begin
-          case(aluControl)
+        endcase
 
-5'b00000 : AluResult = A + B ;// add
-5'b00001 : AluResult = A - B ; // sub
-5'b00010 : AluResult = A * B ; //mul
-5'b00011 : AluResult = A / B ; //div 
-5'b00100 : AluResult = A % B ; //mod
-5'b00101 : begin
-                if (A == B)
-                begin 
-                Flags[0] = 1'b1;
-                Flags[1] = 1'b0;
-                end  
-                else if (A > B)
-                begin
-                Flags[0] = 1'b0; 
-                Flags[1] = 1'b1;
-                end
-                else 
-                begin
-                Flags[0] = 1'b0; 
-                Flags[1] = 1'b0;
-                end
-           end                        //cmp
-5'b00110 : AluResult = A & B ; //and
-5'b00111 : AluResult = A | B ; //or
-5'b01000 : AluResult = ~A ;    //not
-5'b01001 : AluResult =  B ;    // mov
-5'b01010 : AluResult = A << B ;   //lsl
-5'b01011 : AluResult = A >> B ; // A unsigned   //lsr
-5'b01100 : 
-          begin
-          AluResult= A_signed >>> B;                     // A signed     //asr
-          end
-5'b01101:
-          begin
-           
-          
-          end
-                   
-default: begin
-          AluResult = 32'd0;
-          Flags[0] = 1'b0; 
-          Flags[1] = 1'b0;
-         end
-
-endcase
-end
+        // Setting Zero_flag if ALU_result is zero
+        if (alu_result == 0)
+            zero_flag = 1'b1;
+        else
+            zero_flag = 1'b0;
+        
+    end
 endmodule
