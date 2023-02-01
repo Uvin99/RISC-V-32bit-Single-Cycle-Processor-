@@ -1,6 +1,6 @@
 // input: 2-bit alu_mem_write control signal and 6-bit funct field from instruction
 // output: 4-bit alu control input
-module alucontrol (aluop, funct7, funct3 , out_to_alu);
+module aluControl (aluop, funct7, funct3 , out_to_alu);
 	input [1:0] aluop;
 	input [6:0] funct7;
     input [2:0] funct3;

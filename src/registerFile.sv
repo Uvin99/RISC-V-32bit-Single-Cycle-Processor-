@@ -3,6 +3,7 @@
 // read: on falling edge; data width 32 bit; address width 5 bit
 // control: write on rising edge if (reg_write == 1)
 // async reset: set all register content to 0
+
 module registerFile (read_addr_1, read_addr_2, write_addr, read_data_1, read_data_2, write_data, reg_write, clk, reset);
 	input [4:0] read_addr_1, read_addr_2, write_addr;
 	input [31:0] write_data;

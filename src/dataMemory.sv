@@ -4,7 +4,7 @@
 // data input/output: 32 bits
 // write: on rising edge, when (mem_write == 1)
 // read: asynchronous, when (mem_read == 1)
-module data_memory (addr, write_data, read_data, clk, reset, mem_read, mem_write);
+module dataMemory (addr, write_data, read_data, clk, reset, mem_read, mem_write);
 	input [7:0] addr;
 	input [31:0] write_data;
 	output [31:0] read_data;

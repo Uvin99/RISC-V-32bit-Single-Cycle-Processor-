@@ -32,7 +32,20 @@ set_property target_language Verilog [current_project]
 set_property board_part xilinx.com:zc702:part0:1.4 [current_project]
 set_property ip_output_repo {g:/Sem5/CSD/Processor project/Src files/project_1/project_1.cache/ip} [current_project]
 set_property ip_cache_permissions {read write} [current_project]
-read_verilog -library xil_defaultlib -sv {{G:/Sem5/CSD/Processor project/Src files/src/InstructionMemory.sv}}
+read_verilog -library xil_defaultlib -sv {
+  {G:/Sem5/CSD/Processor project/Src files/src/InstructionMemory.sv}
+  {G:/Sem5/CSD/Processor project/Src files/src/N_bitMux.sv}
+  {G:/Sem5/CSD/Processor project/Src files/src/alu.sv}
+  {G:/Sem5/CSD/Processor project/Src files/src/aluAdder.sv}
+  {G:/Sem5/CSD/Processor project/Src files/src/aluControl.sv}
+  {G:/Sem5/CSD/Processor project/Src files/src/controlUnit.sv}
+  {G:/Sem5/CSD/Processor project/Src files/src/dataMemory.sv}
+  {G:/Sem5/CSD/Processor project/Src files/src/immGenerator.sv}
+  {G:/Sem5/CSD/Processor project/Src files/src/programCounter.sv}
+  {G:/Sem5/CSD/Processor project/Src files/src/registerFile.sv}
+  {G:/Sem5/CSD/Processor project/Src files/src/shiftLeft2.sv}
+  {G:/Sem5/CSD/Processor project/Src files/src/processor.sv}
+}
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
 # design are intentionally left as such for best results. Dcp files will be
@@ -44,12 +57,12 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 set_param ips.enableIPCacheLiteLoad 0
 close [open __synthesis_is_running__ w]
 
-synth_design -top InstructionMemory -part xc7z020clg484-1
+synth_design -top processor -part xc7z020clg484-1
 
 
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef InstructionMemory.dcp
-create_report "synth_1_synth_report_utilization_0" "report_utilization -file InstructionMemory_utilization_synth.rpt -pb InstructionMemory_utilization_synth.pb"
+write_checkpoint -force -noxdef processor.dcp
+create_report "synth_1_synth_report_utilization_0" "report_utilization -file processor_utilization_synth.rpt -pb processor_utilization_synth.pb"
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]
