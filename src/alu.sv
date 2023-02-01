@@ -26,7 +26,7 @@ module alu(
     input [31:0] A,B, 
     input[3:0] alu_control,
     output reg [31:0] alu_result,
-    output reg zero_flag
+    output reg zero_flag 
 );
     always @(*)
     begin
@@ -36,19 +36,19 @@ module alu(
         4'b0000: alu_result = A&B;
         4'b0001: alu_result = A|B;
         4'b0010: alu_result = A+B;
-        4'b0100: alu_result = A-B;
-        4'b1000: begin 
+        4'b0110: alu_result = A-B;
+        4'b0011: begin 
             if(A<B)
             alu_result = 1;
             else
             alu_result = 0;
         end
-        4'b0011: alu_result = A<<B;
-        4'b0101: alu_result = A>>B;
-        4'b0110: alu_result = A*B;  //multiply
+        4'b0100: alu_result = A<<B;
+        4'b0111: alu_result = A>>B;
+        4'b0101: alu_result = A*B;  //multiply
         4'b0111: alu_result = A^B; //xor
-        4'b1001: alu_result = ~A;  //not
-        4'b1011: alu_result = B;  //mov
+        4'b1000: alu_result = ~A;  //not
+        4'b1001: alu_result = B;  //mov
         4'b1010: alu_result = A/B; //div
         4'b1101: alu_result = A%B; //mod
 
