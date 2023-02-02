@@ -2,13 +2,13 @@
 # Webtalk v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Sun Jan 29 10:56:01 2023
-# Process ID: 13884
+# Start of session at: Thu Feb  2 21:22:26 2023
+# Process ID: 30044
 # Current directory: G:/Sem5/CSD/Processor project/Src files/project_1/project_1.sim/sim_1/behav/xsim
-# Command line: wbtcv.exe -mode batch -source G:/Sem5/CSD/Processor project/Src files/project_1/project_1.sim/sim_1/behav/xsim/xsim.dir/alu_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+# Command line: wbtcv.exe -mode batch -source G:/Sem5/CSD/Processor project/Src files/project_1/project_1.sim/sim_1/behav/xsim/xsim.dir/immGen_tb_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: G:/Sem5/CSD/Processor project/Src files/project_1/project_1.sim/sim_1/behav/xsim/webtalk.log
 # Journal file: G:/Sem5/CSD/Processor project/Src files/project_1/project_1.sim/sim_1/behav/xsim\webtalk.jou
 #-----------------------------------------------------------
 source G:/Sem5/CSD/Processor -notrace
 couldn't read file "G:/Sem5/CSD/Processor": no such file or directory
-INFO: [Common 17-206] Exiting Webtalk at Sun Jan 29 10:56:01 2023...
+INFO: [Common 17-206] Exiting Webtalk at Thu Feb  2 21:22:26 2023...

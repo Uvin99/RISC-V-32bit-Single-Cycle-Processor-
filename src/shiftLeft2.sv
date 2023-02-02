@@ -2,6 +2,9 @@
 // input width: 32 bits
 // output width: 32 bits
 // fill the void with 0 after shifting
+
+
+
 module shiftLeft2 (shift_in, shift_out);
 	input [31:0] shift_in;
 	output [31:0] shift_out;
