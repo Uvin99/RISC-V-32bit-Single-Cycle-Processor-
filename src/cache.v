@@ -34,15 +34,16 @@ module cache(clk,address,read,dataIn,dataOut,hit);
     output reg hit;
     output reg [31:0] dataOut;
 
-    reg [`BLOCK_SIZE+4:0] buffer;
+    reg [`BLOCK_SIZE+4:0] buffer;// leaving 4 bits as Tag Directory
     reg [3:0] index;
     reg [1:0] blockOffset;
-    reg [`BLOCK_SIZE + 4:0] cache [`BLOCKS-1:0];
+    reg [`BLOCK_SIZE + 4:0] cache [`BLOCKS-1:0];  // Initialiting registry for data+tag
 
     always@(posedge clk)
     begin
         index = address[5:2];
         blockOffset = address[1:0];
+        
         if(read == 0) begin
             buffer[0] = 1;
             buffer[4:1] = address[31:28];

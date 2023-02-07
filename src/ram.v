@@ -20,30 +20,35 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module ram(clk,address,data_out);
+module ram(clk,address,data_out, mem_read, write_data, mem_write,reset);
     input [9:0] address;
-    input clk;
-
+    input clk, mem_read, mem_write,reset;
+    input [31:0] write_data;
     output [127:0] data_out;
 
-    reg [127:0] data_out;
-    reg [9:0] intialAddress;
-    integer i;
-    integer p;
-    integer q;
+    //reg [127:0] data_out;
+    //reg [9:0] intialAddress;
+    reg[1:0] offset;
+    reg[7:0] index;
+    reg [127:0] dmemory [255:0];
+    
+    integer k;
+   
 
-
-    always@(posedge clk)
-    begin
-        intialAddress = {address[9:2],{4'b0000}};
-        q=31;
-        for(i=0;i<4;i=i+1) begin
-            data_out[q-:32] = intialAddress;
-            // $display("%b\n",data_out[q-:32]);
-            q = q+32;        
-            intialAddress = intialAddress+1;
-            
-        end
-        // $display("\n");
-    end
+    assign data_out = (mem_read) ? dmemory[address[9:2]] : 128'bx;
+    
+    
+    always @(posedge clk or posedge reset)// Ou modifies reset to posedge
+	begin
+	   index  = address[9:2];
+	   offset = address[1:0];
+		if (reset == 1'b1) 
+			begin
+				for (k=0; k<256; k=k+1) begin
+					dmemory[k] = 128'b0;
+				end
+			end
+		else
+			if (mem_write) dmemory[index][32*offset+31-:32] = write_data;
+	end
 endmodule
